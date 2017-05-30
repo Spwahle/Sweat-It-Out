@@ -5,7 +5,10 @@
     <title>Sweat It Out</title>
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet' type='text/css'>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="autumn.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+// Add the new slick-theme.css if you want the default styling
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 </head>
@@ -31,12 +34,25 @@
     </nav>
   </header>
 
+  <div class="your-class">
+    <div>
+    <img id= "Inspire 1" src="./Assets/Inspiration1.jpeg"/>
+    </div>
+    <div>
+      <img id= "Inspire 2" src="./Assets/Inspiration2.jpeg"/>
+    </div>
+    <div>
+      <img id= "Inspire 3" src="./Assets/Inspire3.jpeg"/>
+    </div>
+  </div>
+
 <div class="main">
   <div class="wrapper">
 
   <section class="form-selection" id="form-selection">
     <form class="help-me-choose-form" id="help-me-choose-form">
       <fieldset>
+
         <legend>What matters to you most?</legend>
       <div class="question">
         <div id="question-space"></div>
@@ -58,5 +74,14 @@
   <footer>Copyright &copy; 2016 <a href="about.html">SweatItOut</a></footer>
   <script src="js/app.js"></script>
   <script src="js/app2.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+
+  $(document).ready(function(){
+  $('.your-class').slick({
+    setting-name: setting-value
+  });
+});
 </body>
 </html>
