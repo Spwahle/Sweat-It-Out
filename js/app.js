@@ -1,23 +1,13 @@
 
-var currentWorkout;
+var currentexercise;
 var commentsArray = [];
-var workoutArray = [];
-var workoutIntense = [];
-var workoutTime = [];
-var workoutsection = [];
-var workoutCardio = [];
-var workoutCalories = [];
+var exerciseArray = [];
+var exerciseIntense = [];
+var exerciseTime = [];
+var exercisesection = [];
+var exerciseCardio = [];
+var exerciseCalories = [];
 
-// function Neighborhood (name) {
-//   this.name = name;
-//   this.characteristics = [];
-//   this.map = '';
-//   this.blurb = '';
-//   this.score = 0;
-//   this.pageLink = '';
-//   this.factsList = [];
-//   this.photo = '';
-// }
 
 function Exercise (name) {
   this.name = name;
@@ -28,14 +18,6 @@ function Exercise (name) {
   this.calories = [];
   this.equipment = [];
 }
-
-// Neighborhood.prototype.addCharacteristic = function(characteristic, value) {
-//   var char = {
-//     characteristic: characteristic,
-//     value: value
-//   };
-//   this.characteristics.push(char);
-// };
 
 Exercise.prototype.addCharacteristic = function(characteristic, value) {
   var char = {
@@ -48,18 +30,53 @@ Exercise.prototype.addCharacteristic = function(characteristic, value) {
 var resistantBand
 
 //	Front Squat •	Cross body reach •	Upright row •	Triceps extensions •	Overhead press •	Bent over rows •	Lateral raise •	Lying chest press •	Russian twist •	Tricep kickbacks •	Bicep curls
-var resist = new Neighborhood ('resist');
+var resist = new Exercise ('resist');
 resist.addCharacteristic('section', true);
 resist.addCharacteristic('cardio', false);
 resist.addCharacteristic('time', false);
 resist.addCharacteristic('intense', false);
 resist.addCharacteristic('calories', true);
-resist.map = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42981.60533212787!2d-122.42219963318377!3d47.67761592236304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549015d57a5da881%3A0xd07680ac0ad3f49c!2sresist%2C+Seattle%2C+WA!5e0!3m2!1sen!2sus!4v1459889721120';
-resist.blurb = '';
 resist.pageLink = 'resist';
 resist.photo = 'Assets/resist.jpg';
 resist.factsList = [''];
-neighborhoodArray.push(resist);
+exerciseArray.push(resist);
+
+var pullups = new Exercise ('pullups');
+pullups.addCharacteristic('section', true);
+pullups.addCharacteristic('cardio', false);
+pullups.addCharacteristic('time', false);
+pullups.addCharacteristic('intense', false);
+pullups.addCharacteristic('calories', true);
+pullups.pageLink = 'pullups';
+pullups.photo = 'Assets/pullups.jpg';
+pullups.factsList = [''];
+exerciseArray.push(pullups);
+
+var chair = new Exercise ('chair');
+chair.addCharacteristic('section', true);
+chair.addCharacteristic('cardio', false);
+chair.addCharacteristic('time', false);
+chair.addCharacteristic('intense', false);
+chair.addCharacteristic('calories', true);
+chair.map = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42981.60533212787!2d-122.42219963318377!3d47.67761592236304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549015d57a5da881%3A0xd07680ac0ad3f49c!2sresist%2C+Seattle%2C+WA!5e0!3m2!1sen!2sus!4v1459889721120';
+chair.blurb = '';
+chair.pageLink = 'chair';
+chair.photo = 'Assets/chair.jpg';
+chair.factsList = [''];
+exerciseArray.push(chair);
+
+var bodyweight = new Exercise ('bodyweight');
+bodyweight.addCharacteristic('section', true);
+bodyweight.addCharacteristic('cardio', false);
+bodyweight.addCharacteristic('time', false);
+bodyweight.addCharacteristic('intense', false);
+bodyweight.addCharacteristic('calories', true);
+bodyweight.map = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42981.60533212787!2d-122.42219963318377!3d47.67761592236304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549015d57a5da881%3A0xd07680ac0ad3f49c!2sresist%2C+Seattle%2C+WA!5e0!3m2!1sen!2sus!4v1459889721120';
+bodyweight.blurb = '';
+bodyweight.pageLink = 'bodyweight';
+bodyweight.photo = 'Assets/bodyweight.jpg';
+bodyweight.factsList = [''];
+exerciseArray.push(bodyweight);
 
 
 
@@ -84,9 +101,9 @@ function getQueryVariable(variable)
     value = pair[1];
     console.log('key: ' + key);
     if( key === 'id' ){
-      for (var i = 0; i < workoutArray.length; i++){
-        if (workoutArray[i].pageLink === pair[1]){
-          displayWorkout(workoutArray[i]);
+      for (var i = 0; i < exerciseArray.length; i++){
+        if (exerciseArray[i].pageLink === pair[1]){
+          displayexercise(exerciseArray[i]);
           return;
         }
       }
@@ -94,33 +111,33 @@ function getQueryVariable(variable)
   }
 }
 
-var workoutCheck = document.getElementById('workout-name');
-if (workoutCheck) {
+var exerciseCheck = document.getElementById('exercise-name');
+if (exerciseCheck) {
   getQueryVariable('id');
 }
 
-//DISPLAY PAGE CONTENT FOR workout.HTML
-function displayWorkout(workout){
+//DISPLAY PAGE CONTENT FOR exercise.HTML
+function displayexercise(exercise){
 
   fetchCommentsFromLocal();
 
   var title = document.createElement('h1');
-  title.textContent = workout.name;
-  document.getElementById('workout-name').appendChild(title);
+  title.textContent = exercise.name;
+  document.getElementById('exercise-name').appendChild(title);
 
   var mapImage = document.createElement('iframe');
-  mapImage.src = workout.map;
+  mapImage.src = exercise.map;
   document.getElementById('google-map').appendChild(mapImage);
 
   var blurbContent = document.createElement('section');
-  blurbContent.textContent = workout.blurb;
+  blurbContent.textContent = exercise.blurb;
   document.getElementById('info-box').appendChild(blurbContent);
 
-  currentWorkout = workout.pageLink;
+  currentexercise = exercise.pageLink;
 
-  var workoutPhoto = document.createElement('img');
-  workoutPhoto.setAttribute('src', workout.photo);
-  document.getElementById('info-box').appendChild(workoutPhoto);
+  var exercisePhoto = document.createElement('img');
+  exercisePhoto.setAttribute('src', exercise.photo);
+  document.getElementById('info-box').appendChild(exercisePhoto);
 
   var factsContent = document.createElement('ul');
   document.getElementById('info-box').appendChild(factsContent);
@@ -128,7 +145,7 @@ function displayWorkout(workout){
   for (var i = 0; i < commentsArray.length; i++) {
     var userComment = document.createElement('p');
     var inputName = document.createElement('p');
-    if (commentsArray[i].workout === currentWorkout) {
+    if (commentsArray[i].exercise === currentexercise) {
       userComment.textContent = commentsArray[i].comment;
       inputName.textContent = commentsArray[i].username;
       document.getElementById('comments').appendChild(inputName);
@@ -136,54 +153,54 @@ function displayWorkout(workout){
     }
   }
 
-  for (var i = 0; i < workout.factsList.length; i++){
+  for (var i = 0; i < exercise.factsList.length; i++){
     var facts = document.createElement('li');
-    facts.textContent = workout.factsList[i];
+    facts.textContent = exercise.factsList[i];
     factsContent.appendChild(facts);
   }
 }
 
-function displayWorkouts() {
+function displayExercises() {
   var places = document.getElementById('places-list');
   var resultsHeader = document.createElement('h2');
-  resultsHeader.textContent = 'List of Workouts';
+  resultsHeader.textContent = 'List of exercises';
   places.appendChild(resultsHeader);
   var formResultsOL = document.createElement('ul');
   places.appendChild(formResultsOL);
-  for (i = 0; i < workoutArray.length; i++) {
+  for (i = 0; i < exerciseArray.length; i++) {
     var formResultsLI = document.createElement('li');
     formResultsOL.appendChild(formResultsLI);
     var aTag = document.createElement('a');
-    aTag.setAttribute('href', 'neighborhood.html?id=' + workoutArray[i].pageLink);
-    aTag.innerHTML = workoutArray[i].name;
+    aTag.setAttribute('href', 'exercise.html?id=' + exerciseArray[i].pageLink);
+    aTag.innerHTML = exerciseArray[i].name;
     formResultsLI.appendChild(aTag);
   };
 }
 
 //display page content for places.html - navigation backup page
-var workoutCheck = document.getElementById('workout-list');
-if (workoutCheck) {
-  displayWorkout();
+var exerciseCheck = document.getElementById('exercise-list');
+if (exerciseCheck) {
+  displayexercise();
 }
 
 //EVENT LISTENER FOR COMMENTS
-var commentForm = document.getElementById('neighborhood-comment-form');
+var commentForm = document.getElementById('exercise-comment-form');
 commentForm.addEventListener('submit', processComment);
 
 function processComment(event){
   event.preventDefault();
   var userComment = document.createElement('p');
-  userComment.setAttribute('class', currentWorkout);
+  userComment.setAttribute('class', currentexercise);
   userComment.textContent = 'Comment: ' + event.target.comment.value;
   console.log(userComment);
   var inputName = document.createElement('p');
-  inputName.setAttribute('class', currentWorkout);
+  inputName.setAttribute('class', currentexercise);
   inputName.textContent = 'Name: ' + event.target.nameofuser.value;
   console.log(inputName);
   document.getElementById('comments').appendChild(inputName);
   document.getElementById('comments').appendChild(userComment);
   var commentObject = {
-    Workout: currentWorkout,
+    exercise: currentexercise,
     username: inputName.textContent,
     comment: userComment.textContent
   };
@@ -208,5 +225,5 @@ var getUserAnswers = document.getElementById('sweat-it-out-form');
 getUserAnswers.addEventListener('submit', processUserAnswers);
 
 //EVENT LISTENER FOR COMMENTS
-var commentForm = document.getElementById('workout-comment-form');
+var commentForm = document.getElementById('exercise-comment-form');
 commentForm.addEventListener('submit', processComment);
