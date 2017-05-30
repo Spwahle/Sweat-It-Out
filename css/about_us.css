@@ -1,0 +1,30 @@
+.bioInfoBox {
+    margin-top: 30px;
+    width: 500px;
+    height: 180px;
+
+}
+
+.shaun {
+  width: 150px;
+  height: 200px;
+}
+
+.george {
+  width: 150px;
+  height: 200px;
+}
+
+.alex {
+  width: 150px;
+  height: 200px;
+}
+
+.chang {
+  transform: rotate(90deg);
+  width: 200px;
+  height: 150px;
+  position: relative;
+  left: -25px;
+  top: 30px;
+}
