@@ -4,8 +4,8 @@
   <head>
     <title>Sweat It Out</title>
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet' type='text/css'>
-    <gitlink href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 </head>
@@ -18,15 +18,16 @@
           <li>
               <a href="exercise.html">Exercise list</a>
                 <ul>
-                  <li><a href=#>Resistance Band Exercises</a></li>
-                  <li><a href=#>Bodyweight Exercises</a></li>
-                  <li><a href=#>Core Exercises</a></li>
-                  <li><a href=#>Chair Exercises</a></li>
-                  <li><a href=#>Pull Up Bar Exercises</a></li>
+                  <li><a href="resistance.html">Resistance Band Exercises</a></li>
+                  <li><a href="bodyweight.html">Bodyweight Exercises</a></li>
+                  <li><a href="core.html">Core Exercises</a></li>
+                  <li><a href="chair.html">Chair Exercises</a></li>
+                  <li><a href="pullup.html">Pull Up Bar Exercises</a></li>
                 </ul>
               </li>
-          <li><a href="helpmechoose.html">Help Me Pick</a></li>
+          <li><a href="sweatitout.html">Sweat It Out</a></li>
           <li><a href="about.html">About Us</a></li>
+        </li>
       </ul>
     </nav>
   </header>
@@ -37,11 +38,12 @@
   <section class="form-selection" id="form-selection">
     <form class="help-me-choose-form" id="help-me-choose-form">
       <fieldset>
-        <legend>What matters to you most?</legend>
+
+        <!-- <legend>What matters to you most?</legend>
       <div class="question">
         <div id="question-space"></div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Submit</button> -->
 
       </fieldset>
     </form>
@@ -53,10 +55,29 @@
   <div class="push"></div>
   </div>
 </div>
+<div class="wrapper">
+  <section class="hpsection">
+    <div class="welcome-text">
+      <h1>Ready to Sweat It Out?</h1>
+      <p>Ready to workout but don't know where to start? Answer a few short questions and we will select a workout for you.</p>
+      <a class="get-started" href="sweatitout.html">Get Started</a>
+      <p>Or <a class="exercise-link" href="exerciselist.html"> browse a list of exercises</a> instead.</p>
+    </div>
+  </section>
+  <div class="push"></div>
 </div>
 
   <footer>Copyright &copy; 2016 <a href="about.html">SweatItOut</a></footer>
   <script src="js/app.js"></script>
   <script src="js/app2.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+
+  <!-- $(document).ready(function(){
+  $('.your-class').slick({
+    setting-name: setting-value
+  });
+}); -->
 </body>
 </html>

@@ -1,0 +1,77 @@
+.bioInfoBoxShaun h2 {
+  margin-left: 25px;
+}
+
+
+h2 {
+  margin-left: 30px;
+}
+
+.bioInfoBoxShaun {
+  margin-top: 30px;
+  width: 500px;
+  height: 180px;
+
+}
+
+.shaun {
+  width: 150px;
+  height: 200px;
+}
+
+.bioInfoBoxGeorge {
+  position: relative;
+  left: -50px;
+  margin-top: 30px;
+  width: 500px;
+  height: 180px;
+}
+
+.george {
+  transform: rotate(90deg);
+  width: 200px;
+  height: 150px;
+  position: relative;
+  left: -25px;
+  top: 40px;
+}
+
+.bioInfoBoxAlex {
+  position: relative;
+  left: 2px;
+  bottom: -40px;
+  margin-top: 30px;
+  width: 800px;
+  height: 180px;
+}
+
+.alex {
+  position: relative;
+  left: 0px;
+  bottom: -50px;
+  margin-top: 30px;
+  width: 150px;
+  height: 200px;
+}
+
+.bioInfoBoxChang {
+  position: relative;
+  left: -50px;
+  bottom: -50px;
+  margin-top: 50px;
+  width: 800px;
+  height: 195px;
+}
+
+.chang {
+  transform: rotate(90deg);
+  width: 200px;
+  height: 150px;
+  position: relative;
+  left: -25px;
+  top: 90px;
+}
+
+.concept {
+  margin-top: 90px;
+}
