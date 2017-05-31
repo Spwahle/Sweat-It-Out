@@ -4,19 +4,21 @@ var commentsArray = [];
 var exerciseArray = [];
 var exerciseIntense = [];
 var exerciseTime = [];
-var exercisesection = [];
+var exerciseindoors = [];
 var exerciseCardio = [];
 var exerciseCalories = [];
 
 
 function Exercise (name) {
   this.name = name;
-  this.intensity = [];
-  this.section = [];
-  this.time = [];
+  this.indoors = [];
   this.cardio = [];
+  this.time = [];
+  this.intense = [];
   this.calories = [];
-  this.equipment = [];
+  this.partner = [];
+  this.body = [];
+  this.sweat = [];
   // this.characteristics = [];
 }
 
@@ -30,52 +32,78 @@ Exercise.prototype.addCharacteristic = function(characteristic, value) {
   // this.characteristics.push(char);
 };
 
-// create var list of 'section', 'resist', ... etc to correspond to boolean answers
+// create var list of 'indoors', 'Resistance', ... etc to correspond to boolean answers
 
 //	Front Squat •	Cross body reach •	Upright row •	Triceps extensions •	Overhead press •	Bent over rows •	Lateral raise •	Lying chest press •	Russian twist •	Tricep kickbacks •	Bicep curls
-var resist = new Exercise ('resist');
-resist.addCharacteristic('section', true);
-resist.addCharacteristic('cardio', false);
-resist.addCharacteristic('time', false);
-resist.addCharacteristic('intense', false);
-resist.addCharacteristic('calories', true);
-resist.pageLink = 'resistance.html';
-resist.photo = 'Assets/Band/images.jpg';
-resist.factsList = [''];
-exerciseArray.push(resist);
+var Resistance = new Exercise ('Resistance Band');
+Resistance.addCharacteristic('indoors', true);
+Resistance.addCharacteristic('cardio', false);
+Resistance.addCharacteristic('time', false);
+Resistance.addCharacteristic('intense', true);
+Resistance.addCharacteristic('calories', true);
+Resistance.addCharacteristic('partner', true);
+Resistance.addCharacteristic('body', true);
+Resistance.addCharacteristic('sweat', false);
+Resistance.pageLink = 'resistance.html';
+Resistance.photo = 'Assets/Band/images.jpg';
+Resistance.factsList = ['Use the heel of your feet to push your body up to the starting position as you exhale.'];
+exerciseArray.push(Resistance);
 
-var pullups = new Exercise ('pullups');
-pullups.addCharacteristic('section', true);
-pullups.addCharacteristic('cardio', true);
-pullups.addCharacteristic('time', true);
-pullups.addCharacteristic('intense', false);
-pullups.addCharacteristic('calories', true);
-pullups.pageLink = 'pullups';
-pullups.photo = 'Assets/pullups.jpg';
-pullups.factsList = [''];
-exerciseArray.push(pullups);
+var Pullups = new Exercise ('Pullups');
+Pullups.addCharacteristic('indoors', false);
+Pullups.addCharacteristic('cardio', true);
+Pullups.addCharacteristic('time', false);
+Pullups.addCharacteristic('intense', true);
+Pullups.addCharacteristic('calories', false);
+Pullups.addCharacteristic('partner', false);
+Pullups.addCharacteristic('body', true);
+Pullups.addCharacteristic('sweat', true);
+Pullups.pageLink = 'pullups.html';
+Pullups.photo = 'Assets/Pullups.jpg';
+Pullups.factsList = [''];
+exerciseArray.push(Pullups);
 
-var chair = new Exercise ('chair');
-chair.addCharacteristic('section', true);
-chair.addCharacteristic('cardio', false);
-chair.addCharacteristic('time', false);
-chair.addCharacteristic('intense', true);
-chair.addCharacteristic('calories', true);
-chair.pageLink = 'chair';
-chair.photo = 'Assets/chair.jpg';
-chair.factsList = [''];
-exerciseArray.push(chair);
+var Chair = new Exercise ('Chair Workouts');
+Chair.addCharacteristic('indoors', true);
+Chair.addCharacteristic('cardio', true);
+Chair.addCharacteristic('time', false);
+Chair.addCharacteristic('intense', true);
+Chair.addCharacteristic('calories', true);
+Chair.addCharacteristic('partner', false);
+Chair.addCharacteristic('body', true);
+Chair.addCharacteristic('sweat', true);
+Chair.pageLink = 'chair.html';
+Chair.photo = 'Assets/Chair.jpg';
+Chair.factsList = [''];
+exerciseArray.push(Chair);
 
-var bodyweight = new Exercise ('bodyweight');
-bodyweight.addCharacteristic('section', true);
-bodyweight.addCharacteristic('cardio', false);
-bodyweight.addCharacteristic('time', false);
-bodyweight.addCharacteristic('intense', false);
-bodyweight.addCharacteristic('calories', false);
-bodyweight.pageLink = 'bodyweight';
-bodyweight.photo = 'Assets/bodyweight.jpg';
-bodyweight.factsList = [''];
-exerciseArray.push(bodyweight);
+var Bodyweight = new Exercise ('Bodyweight');
+Bodyweight.addCharacteristic('indoors', true);
+Bodyweight.addCharacteristic('cardio', false);
+Bodyweight.addCharacteristic('time', true);
+Bodyweight.addCharacteristic('intense', false);
+Bodyweight.addCharacteristic('calories', false);
+Bodyweight.addCharacteristic('partner', false);
+Bodyweight.addCharacteristic('body', true);
+Bodyweight.addCharacteristic('sweat', true);
+Bodyweight.pageLink = 'bodyweight.html';
+Bodyweight.photo = 'Assets/Bodyweight.jpg';
+Bodyweight.factsList = [''];
+exerciseArray.push(Bodyweight);
+
+var Core = new Exercise ('Core Exercises');
+Core.addCharacteristic('indoors', false);
+Core.addCharacteristic('cardio', true);
+Core.addCharacteristic('time', true);
+Core.addCharacteristic('intense', true);
+Core.addCharacteristic('calories', true);
+Core.addCharacteristic('partner', true);
+Core.addCharacteristic('body', true);
+Core.addCharacteristic('sweat', true);
+Core.pageLink = 'core.html';
+Core.photo = 'Assets/core.jpg';
+Core.factsList = [''];
+exerciseArray.push(Core);
 
 
 
@@ -128,7 +156,7 @@ function displayexercise(exercise){
   // mapImage.src = exercise.map;
   // document.getElementById('google-map').appendChild(mapImage);
 
-  var blurbContent = document.createElement('section');
+  var blurbContent = document.createElement('indoors');
   blurbContent.textContent = exercise.blurb;
   document.getElementById('info-box').appendChild(blurbContent);
 
@@ -219,10 +247,10 @@ function fetchCommentsFromLocal(){
     commentsArray = savedComments; }
 }
 
-//EVENT LISTENER FOR FORM PAGE
-// var getUserAnswers = document.getElementById('sweat-it-out-form');
-// getUserAnswers.addEventListener('submit', processUserAnswers);
+// EVENT LISTENER FOR FORM PAGE
+var getUserAnswers = document.getElementById('sweat-it-out-form');
+getUserAnswers.addEventListener('submit', processUserAnswers);
 
-//EVENT LISTENER FOR COMMENTS
-// var commentForm = document.getElementById('exercise-comment-form');
-// commentForm.addEventListener('submit', processComment);
+// EVENT LISTENER FOR COMMENTS
+var commentForm = document.getElementById('exercise-comment-form');
+commentForm.addEventListener('submit', processComment);

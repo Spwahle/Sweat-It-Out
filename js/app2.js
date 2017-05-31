@@ -8,32 +8,45 @@ function Question () {
   this.name = '';
 }
 
-var sectionQuestion = new Question ();
-sectionQuestion.question = 'What section do you want to work out? Upper or Lower?';
-sectionQuestion.name = 'sectionQuestion';
-questionArray.push(sectionQuestion);
-
-var intenseQuestion = new Question ();
-intenseQuestion.question = 'Do you want an intense workout?';
-intenseQuestion.name = 'intenseQuestion';
-questionArray.push(intenseQuestion);
-
-var timeQuestion = new Question ();
-timeQuestion.question = 'Do you have a lot of time to dedicate?';
-timeQuestion.name = 'timeQuestion';
-questionArray.push(timeQuestion);
+var indoorsQuestion = new Question ();
+indoorsQuestion.question = 'Do you want to work out indoors?';
+indoorsQuestion.name = 'indoorsQuestion';
+questionArray.push(indoorsQuestion);
 
 var cardioQuestion = new Question ();
 cardioQuestion.question = 'Do you want the workout to include cardio?';
 cardioQuestion.name = 'cardioQuestion';
 questionArray.push(cardioQuestion);
 
+var timeQuestion = new Question ();
+timeQuestion.question = 'Do you have a lot of time to dedicate?';
+timeQuestion.name = 'timeQuestion';
+questionArray.push(timeQuestion);
+
+var intenseQuestion = new Question ();
+intenseQuestion.question = 'Do you want an intense workout?';
+intenseQuestion.name = 'intenseQuestion';
+questionArray.push(intenseQuestion);
 
 var caloriesQuestion = new Question ();
-caloriesQuestion.question = 'Do you want to build a lot of calories?';
+caloriesQuestion.question = 'Do you want to burn a lot of calories?';
 caloriesQuestion.name = 'caloriesQuestion';
 questionArray.push(caloriesQuestion);
 
+var partnerQuestion = new Question ();
+partnerQuestion.question = 'Do you want to workout with a partner?';
+partnerQuestion.name = 'partnerQuestion';
+questionArray.push(partnerQuestion);
+
+var bodyQuestion = new Question ();
+bodyQuestion.question = 'Do you want a full body workout?';
+bodyQuestion.name = 'bodyQuestion';
+questionArray.push(bodyQuestion);
+
+var sweatQuestion = new Question ();
+sweatQuestion.question = 'Do you want to SWEAT IT OUT!?';
+sweatQuestion.name = 'sweatQuestion';
+questionArray.push(sweatQuestion);
 
 
 for (var i = 0; i < questionArray.length; i++){
@@ -122,7 +135,7 @@ function processUserAnswers(event){
 
   var sortedList = getSortedExercises(answerArray);
   // [{score:5, exerciseName: 'pullups', ..... }]
-  console.log("sorted list is ", sortedList);
+  console.log('sorted list is ', sortedList);
 
   // assignexerciseScores();
   // sortResults();
@@ -131,7 +144,7 @@ function processUserAnswers(event){
 }
 
 function getSortedExercises(userAnswer) {
-  // these booleans correspond to section, cardio, time, intense and calories in that order
+  // these booleans correspond to indoors, cardio, time, intense and calories in that order
   // for loop..
   // for each item in your list of exercises, and each user answer, iterate a score.
   var scoreArray = [];
@@ -140,11 +153,14 @@ function getSortedExercises(userAnswer) {
   for (var i = 0; i < exerciseArray.length; i++) {
     var scoreStruct = {};
     var score = 0;
-    if (exerciseArray[i].section.toString() == userAnswer[0])  score++;
+    if (exerciseArray[i].indoors.toString() == userAnswer[0])  score++;
     if (exerciseArray[i].cardio.toString() == userAnswer[1])  score++;
     if (exerciseArray[i].time.toString() == userAnswer[2]) score++;
     if (exerciseArray[i].intense.toString() == userAnswer[3]) score++;
     if (exerciseArray[i].calories.toString() == userAnswer[4]) score++;
+    if (exerciseArray[i].partner.toString() == userAnswer[5]) score++;
+    if (exerciseArray[i].body.toString() == userAnswer[6]) score++;
+    if (exerciseArray[i].sweat.toString() == userAnswer[7]) score++;
     // do the same for the other 4
     console.log("score is ", score);
     scoreStruct.exercise = exerciseArray[i];
