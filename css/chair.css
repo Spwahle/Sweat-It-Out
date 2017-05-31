@@ -1,0 +1,10 @@
+img {
+  width: 200px;
+  height: 250px;
+}
+
+ul {
+  width: 600px;
+  height: 100px;
+  overflow: auto;
+}
