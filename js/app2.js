@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var userInputArray = [];
 var questionArray = [];
@@ -109,31 +109,73 @@ function processUserAnswers(event){
   event.preventDefault();
   console.log(event.target);
 
+  // create answerArray
+  var answerArray = [];
+
   for (var i = 0; i < questionArray.length; i++) {
     var questionName = questionArray[i].name;
     var userAnswer = event.target[questionName].value;
+    // Add userAnswer to array with .push
     console.log(userAnswer);
-    createUserArray(questionName, userAnswer);
+    answerArray.push(userAnswer);
   }
-  assignexerciseScores();
-  sortResults();
-  removeForm();
-  appendResultList();
+
+  var sortedList = getSortedExercises(answerArray);
+  // [{score:5, exerciseName: 'pullups', ..... }]
+  console.log("sorted list is ", sortedList);
+
+  // assignexerciseScores();
+  // sortResults();
+  // removeForm();
+  appendResultList(sortedList);
 }
+
+function getSortedExercises(userAnswer) {
+  // these booleans correspond to section, cardio, time, intense and calories in that order
+  // for loop..
+  // for each item in your list of exercises, and each user answer, iterate a score.
+  var scoreArray = [];
+
+  // Create a fit score for each exercise based on the booleans in the user answer answerArray
+  for (var i = 0; i < exerciseArray.length; i++) {
+    var scoreStruct = {};
+    var score = 0;
+    if (exerciseArray[i].section.toString() == userAnswer[0])  score++;
+    if (exerciseArray[i].cardio.toString() == userAnswer[1])  score++;
+    if (exerciseArray[i].time.toString() == userAnswer[2]) score++;
+    if (exerciseArray[i].intense.toString() == userAnswer[3]) score++;
+    if (exerciseArray[i].calories.toString() == userAnswer[4]) score++;
+    // do the same for the other 4
+    console.log("score is ", score);
+    scoreStruct.exercise = exerciseArray[i];
+    scoreStruct.matchScore = score;
+    scoreArray.push(scoreStruct);
+  }
+
+  // score list of matches [3, 5, 2, 3], correspond to [resist, pullups, chair, bodyweight]
+  // [pullups, resist, bodyweight, chair]
+
+  // sort the exercises and return
+  scoreArray.sort(function(a, b){ return b.matchScore - a.matchScore; });
+
+  return scoreArray;
+}
+
 //CREATE RANKED LIST AFTER FORM RESULTS
-function appendResultList() {
+function appendResultList(sortedArray) {
   var formResults = document.getElementById('form-results');
   var resultsHeader = document.createElement('h2');
   resultsHeader.textContent = 'Here are the exercises that meet your needs in order from best to worst:';
   formResults.appendChild(resultsHeader);
   var formResultsOL = document.createElement('ol');
   formResults.appendChild(formResultsOL);
-  for (i = 0; i < exerciseArray.length; i++) {
+  for (i = 0; i < sortedArray.length; i++) {
     var formResultsLI = document.createElement('li');
     formResultsOL.appendChild(formResultsLI);
     var aTag = document.createElement('a');
-    aTag.setAttribute('href', 'exercise.html?id=' + exerciseArray[i].pageLink);
-    aTag.innerHTML = exerciseArray[i].name;
+    aTag.setAttribute('href', sortedArray[i].exercise.pageLink);
+    //aTag.setAttribute('href', + sortedArray[i].exercise.pageLink);
+    aTag.innerHTML = sortedArray[i].exercise.name;
     formResultsLI.appendChild(aTag);
   }
 }
