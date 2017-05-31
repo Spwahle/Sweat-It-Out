@@ -238,3 +238,9 @@ margin-top: 2rem;
     padding: 2rem 5rem;
   }
 }
+ol {
+  text-align: center;
+  width:200px;
+  margin:0 auto;
+
+}
