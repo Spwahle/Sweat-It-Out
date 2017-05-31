@@ -17,17 +17,20 @@ function Exercise (name) {
   this.cardio = [];
   this.calories = [];
   this.equipment = [];
+  // this.characteristics = [];
 }
 
 Exercise.prototype.addCharacteristic = function(characteristic, value) {
-  var char = {
-    characteristic: characteristic,
-    value: value
-  };
-  this.characteristics.push(char);
+  // characteristic = time, this would be this.time = value;
+  this[characteristic] = value;
+  // var char = {
+  //   characteristic: characteristic,
+  //   value: value
+  // };
+  // this.characteristics.push(char);
 };
 
-var resistantBand
+// create var list of 'section', 'resist', ... etc to correspond to boolean answers
 
 //	Front Squat •	Cross body reach •	Upright row •	Triceps extensions •	Overhead press •	Bent over rows •	Lateral raise •	Lying chest press •	Russian twist •	Tricep kickbacks •	Bicep curls
 var resist = new Exercise ('resist');
@@ -36,15 +39,15 @@ resist.addCharacteristic('cardio', false);
 resist.addCharacteristic('time', false);
 resist.addCharacteristic('intense', false);
 resist.addCharacteristic('calories', true);
-resist.pageLink = 'resist';
-resist.photo = 'Assets/resist.jpg';
+resist.pageLink = 'resistance.html';
+resist.photo = 'Assets/Band/images.jpg';
 resist.factsList = [''];
 exerciseArray.push(resist);
 
 var pullups = new Exercise ('pullups');
 pullups.addCharacteristic('section', true);
-pullups.addCharacteristic('cardio', false);
-pullups.addCharacteristic('time', false);
+pullups.addCharacteristic('cardio', true);
+pullups.addCharacteristic('time', true);
 pullups.addCharacteristic('intense', false);
 pullups.addCharacteristic('calories', true);
 pullups.pageLink = 'pullups';
@@ -56,10 +59,8 @@ var chair = new Exercise ('chair');
 chair.addCharacteristic('section', true);
 chair.addCharacteristic('cardio', false);
 chair.addCharacteristic('time', false);
-chair.addCharacteristic('intense', false);
+chair.addCharacteristic('intense', true);
 chair.addCharacteristic('calories', true);
-chair.map = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42981.60533212787!2d-122.42219963318377!3d47.67761592236304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549015d57a5da881%3A0xd07680ac0ad3f49c!2sresist%2C+Seattle%2C+WA!5e0!3m2!1sen!2sus!4v1459889721120';
-chair.blurb = '';
 chair.pageLink = 'chair';
 chair.photo = 'Assets/chair.jpg';
 chair.factsList = [''];
@@ -70,9 +71,7 @@ bodyweight.addCharacteristic('section', true);
 bodyweight.addCharacteristic('cardio', false);
 bodyweight.addCharacteristic('time', false);
 bodyweight.addCharacteristic('intense', false);
-bodyweight.addCharacteristic('calories', true);
-bodyweight.map = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42981.60533212787!2d-122.42219963318377!3d47.67761592236304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549015d57a5da881%3A0xd07680ac0ad3f49c!2sresist%2C+Seattle%2C+WA!5e0!3m2!1sen!2sus!4v1459889721120';
-bodyweight.blurb = '';
+bodyweight.addCharacteristic('calories', false);
 bodyweight.pageLink = 'bodyweight';
 bodyweight.photo = 'Assets/bodyweight.jpg';
 bodyweight.factsList = [''];
@@ -80,13 +79,13 @@ exerciseArray.push(bodyweight);
 
 
 
-function createUserArray(characteristic, value){
-  var userChar = {
-    characteristic: characteristic,
-    value: value
-  };
-  userInputArray.push(userChar);
-}
+// function createUserArray(characteristic, value){
+//   var userChar = {
+//     characteristic: characteristic,
+//     value: value
+//   };
+//   userInputArray.push(userChar);
+// }
 
 //QUERYSTRING STUFF
 //based on css-tricks.com/snippets/javascript/get-url-variables/
@@ -125,9 +124,9 @@ function displayexercise(exercise){
   title.textContent = exercise.name;
   document.getElementById('exercise-name').appendChild(title);
 
-  var mapImage = document.createElement('iframe');
-  mapImage.src = exercise.map;
-  document.getElementById('google-map').appendChild(mapImage);
+  // var mapImage = document.createElement('iframe');
+  // mapImage.src = exercise.map;
+  // document.getElementById('google-map').appendChild(mapImage);
 
   var blurbContent = document.createElement('section');
   blurbContent.textContent = exercise.blurb;
@@ -174,18 +173,18 @@ function displayExercises() {
     aTag.setAttribute('href', 'exercise.html?id=' + exerciseArray[i].pageLink);
     aTag.innerHTML = exerciseArray[i].name;
     formResultsLI.appendChild(aTag);
-  };
+  }
 }
 
 //display page content for places.html - navigation backup page
 var exerciseCheck = document.getElementById('exercise-list');
 if (exerciseCheck) {
-  displayexercise();
+  displayExercises();
 }
 
 //EVENT LISTENER FOR COMMENTS
 var commentForm = document.getElementById('exercise-comment-form');
-commentForm.addEventListener('submit', processComment);
+//commentForm.addEventListener('submit', processComment);
 
 function processComment(event){
   event.preventDefault();
@@ -221,9 +220,9 @@ function fetchCommentsFromLocal(){
 }
 
 //EVENT LISTENER FOR FORM PAGE
-var getUserAnswers = document.getElementById('sweat-it-out-form');
-getUserAnswers.addEventListener('submit', processUserAnswers);
+// var getUserAnswers = document.getElementById('sweat-it-out-form');
+// getUserAnswers.addEventListener('submit', processUserAnswers);
 
 //EVENT LISTENER FOR COMMENTS
-var commentForm = document.getElementById('exercise-comment-form');
-commentForm.addEventListener('submit', processComment);
+// var commentForm = document.getElementById('exercise-comment-form');
+// commentForm.addEventListener('submit', processComment);
