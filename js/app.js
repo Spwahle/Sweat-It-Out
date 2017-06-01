@@ -2,11 +2,7 @@
 var currentexercise;
 var commentsArray = [];
 var exerciseArray = [];
-var exerciseIntense = [];
-var exerciseTime = [];
-var exerciseindoors = [];
-var exerciseCardio = [];
-var exerciseCalories = [];
+
 
 
 function Exercise (name) {
@@ -209,6 +205,8 @@ var exerciseCheck = document.getElementById('exercise-list');
 if (exerciseCheck) {
   displayExercises();
 }
+//event listener submit click = document
+
 
 //EVENT LISTENER FOR COMMENTS
 var commentForm = document.getElementById('exercise-comment-form');

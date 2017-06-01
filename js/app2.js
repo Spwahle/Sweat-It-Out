@@ -120,6 +120,7 @@ function sortResults(){
 
 function processUserAnswers(event){
   event.preventDefault();
+  document.getElementById('help-me-choose-form').style.display = 'none';
   console.log(event.target);
 
   // create answerArray
