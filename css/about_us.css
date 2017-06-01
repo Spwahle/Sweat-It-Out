@@ -1,3 +1,9 @@
+ul {
+  width: 700px;
+  height: 100px;
+  overflow: inherit;
+}
+
 .bioInfoBoxShaun h2 {
   margin-left: 25px;
 }
