@@ -1,3 +1,15 @@
+a { color:white } /* Globally */
+
+/* Each state */
+
+a:visited { text-decoration: none; color: gray; }
+a:hover { text-decoration: none; color:blue; }
+a:focus { text-decoration: none; color:yellow; }
+a:hover, a:active { text-decoration: none; color: white; }
+
+
+
+
 html, body {
   font-size: 16px;
   font-family: 'Fira Sans', sans-serif;
@@ -11,7 +23,7 @@ header {
   width: 100%;
   min-height: 43.75rem;
   height: 100%;
-  background-image: url(../Assets/Inspiration/Inspiration5.jpg);
+  background-image: url(../assets/Inspiration/Inspiration5.jpg);
   max-width: 1980px;
   background-attachment: fixed;
   display: relative;
@@ -70,10 +82,11 @@ nav a {
   max-width:60rem;
   margin: 0 auto;
   background-color: black;
-  opacity: 0.8;
+  opacity: 0.90;
   color: white;
   padding: 1rem;
 }
+
 .main h1{
   margin-top: 0;
 }
@@ -97,7 +110,7 @@ margin: 0 auto;
   text-align: center;
   background-color: #000;
   color: #fff;
-  opacity: 0.75;
+  opacity: 0.90;
 }
 .welcome-text h1 {
   font-size: 3rem;
@@ -110,10 +123,13 @@ margin: 0 auto;
   color: #000;
   font-size: 1.2rem;
   text-decoration: none;
+  border-radius: 4px;
 }
 
 .get-started:hover {
   text-decoration: underline;
+  color: #000
+
 }
 
 .places-link {
@@ -128,6 +144,7 @@ margin: 0 auto;
   padding-bottom: 15px;
   font-size: 1.1rem;
   max-width: 60rem;
+  text-align: center;
 }
 
 .answer {
@@ -140,6 +157,7 @@ margin-left: 60px;
 
 legend {
   font-size: 1.7rem;
+  text-align: center;
 }
 fieldset {
   border: none;
@@ -157,9 +175,9 @@ footer {
   background-color: #000;
   color: white;
   text-align: center;
-  margin-top: 0.625rem;
+  margin-top: 30.625rem;
   font-size: 0.75rem;
-  opacity: 0.8;
+  opacity: 0.90;
 }
 
 .bio{
@@ -222,6 +240,7 @@ li a:hover, footer a:hover {
   font-style: italic;
 }
 .exercise-form {
+text-align: center;
 margin-top: 2rem;
 }
 .questionCSS{
@@ -242,5 +261,19 @@ ol {
   text-align: center;
   width:200px;
   margin:0 auto;
-
+}
+button, html [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: button;
+    border-radius: 4px;
+    padding: 0.5rem 0.7rem;
+    background-color: rgba(255, 255, 255, 1);
+    color: #000;
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-right:10px;
+    margin-left: 0px;
+    text-align: center;
+}
+.form-results h2 {
+  text-align: center;
 }

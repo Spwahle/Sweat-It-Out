@@ -18,6 +18,16 @@ function Exercise (name) {
   // this.characteristics = [];
 }
 
+var rotate = false;
+function setbackground(){
+  window.setTimeout( "setbackground()", 5000);
+  newImage = rotate ? 'url(../Assets/Inspiration/Inspiration5.jpg)' : '../Assets/Inspiration/Inspiration2.jpg)';
+  rotate = !rotate;
+  document.getElementById('change').style.backgroundImage = newImage;
+}
+
+
+
 Exercise.prototype.addCharacteristic = function(characteristic, value) {
   // characteristic = time, this would be this.time = value;
   this[characteristic] = value;

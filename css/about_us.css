@@ -23,14 +23,14 @@ h2 {
 }
 
 .shaun {
-  width: 150px;
+  width: 200px;
   height: 200px;
 }
 
 .bioInfoBoxGeorge {
   position: relative;
-  left: -50px;
-  margin-top: 30px;
+  left: 0;
+  margin-top: 80px;
   width: 500px;
   height: 180px;
 }
@@ -38,9 +38,9 @@ h2 {
 .george {
   transform: rotate(90deg);
   width: 200px;
-  height: 150px;
+  height: 200px;
   position: relative;
-  left: -25px;
+  left:;
   top: 40px;
 }
 
@@ -58,15 +58,15 @@ h2 {
   left: 0px;
   bottom: -50px;
   margin-top: 30px;
-  width: 150px;
+  width: 200px;
   height: 200px;
 }
 
 .bioInfoBoxChang {
   position: relative;
-  left: -50px;
-  bottom: -50px;
-  margin-top: 50px;
+  left: ;
+  bottom: ;
+  margin-top: 120px;
   width: 800px;
   height: 195px;
 }
@@ -74,9 +74,9 @@ h2 {
 .chang {
   transform: rotate(90deg);
   width: 200px;
-  height: 150px;
+  height: 200px;
   position: relative;
-  left: -25px;
+  left: ;
   top: 90px;
 }
 
