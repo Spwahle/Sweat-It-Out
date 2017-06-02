@@ -1,10 +1,10 @@
-
+//
 var currentexercise;
 var commentsArray = [];
 var exerciseArray = [];
 
 
-
+//Constuctor function
 function Exercise (name) {
   this.name = name;
   this.indoors = [];
@@ -18,13 +18,13 @@ function Exercise (name) {
   // this.characteristics = [];
 }
 
-var rotate = false;
-function setbackground(){
-  window.setTimeout( "setbackground()", 5000);
-  newImage = rotate ? 'url(../Assets/Inspiration/Inspiration5.jpg)' : '../Assets/Inspiration/Inspiration2.jpg)';
-  rotate = !rotate;
-  document.getElementById('change').style.backgroundImage = newImage;
-}
+// var rotate = false;
+// function setbackground(){
+//   window.setTimeout( "setbackground()", 5000);
+//   newImage = rotate ? 'url(../Assets/Inspiration/Inspiration5.jpg)' : '../Assets/Inspiration/Inspiration2.jpg)';
+//   rotate = !rotate;
+//   document.getElementById('change').style.backgroundImage = newImage;
+// }
 
 
 
@@ -39,8 +39,6 @@ Exercise.prototype.addCharacteristic = function(characteristic, value) {
 };
 
 // create var list of 'indoors', 'Resistance', ... etc to correspond to boolean answers
-
-//	Front Squat •	Cross body reach •	Upright row •	Triceps extensions •	Overhead press •	Bent over rows •	Lateral raise •	Lying chest press •	Russian twist •	Tricep kickbacks •	Bicep curls
 var Resistance = new Exercise ('Resistance Band');
 Resistance.addCharacteristic('indoors', true);
 Resistance.addCharacteristic('cardio', false);
@@ -112,109 +110,100 @@ Core.factsList = [''];
 exerciseArray.push(Core);
 
 
-
-// function createUserArray(characteristic, value){
-//   var userChar = {
-//     characteristic: characteristic,
-//     value: value
-//   };
-//   userInputArray.push(userChar);
-// }
-
 //QUERYSTRING STUFF
 //based on css-tricks.com/snippets/javascript/get-url-variables/
-function getQueryVariable(variable)
-{
-  var query = window.location.search.substring(1);
-  var vars = query.split('&');
-  var key, value;
-  for (var i = 0; i < vars.length; i++) {
-    var pair = vars[i].split('=');
-    key = pair[0];
-    value = pair[1];
-    console.log('key: ' + key);
-    if( key === 'id' ){
-      for (var i = 0; i < exerciseArray.length; i++){
-        if (exerciseArray[i].pageLink === pair[1]){
-          displayexercise(exerciseArray[i]);
-          return;
-        }
-      }
-    }
-  }
-}
+// function getQueryVariable(variable)
+// {
+//   var query = window.location.search.substring(1);
+//   var vars = query.split('&');
+//   var key, value;
+//   for (var i = 0; i < vars.length; i++) {
+//     var pair = vars[i].split('=');
+//     key = pair[0];
+//     value = pair[1];
+//     console.log('key: ' + key);
+//     if( key === 'id' ){
+//       for (var i = 0; i < exerciseArray.length; i++){
+//         if (exerciseArray[i].pageLink === pair[1]){
+//           displayexercise(exerciseArray[i]);
+//           return;
+//         }
+//       }
+//     }
+//   }
+// }
 
-var exerciseCheck = document.getElementById('exercise-name');
-if (exerciseCheck) {
-  getQueryVariable('id');
-}
+// var exerciseCheck = document.getElementById('exercise-name');
+// if (exerciseCheck) {
+//   getQueryVariable('id');
+// }
 
 //DISPLAY PAGE CONTENT FOR exercise.HTML
-function displayexercise(exercise){
+// function displayexercise(exercise){
+//
+//   fetchCommentsFromLocal();
+//
+//   var title = document.createElement('h1');
+//   title.textContent = exercise.name;
+//   document.getElementById('exercise-name').appendChild(title);
+//
+//   // var mapImage = document.createElement('iframe');
+//   // mapImage.src = exercise.map;
+//   // document.getElementById('google-map').appendChild(mapImage);
+//
+//   var blurbContent = document.createElement('indoors');
+//   blurbContent.textContent = exercise.blurb;
+//   document.getElementById('info-box').appendChild(blurbContent);
+//
+//   currentexercise = exercise.pageLink;
+//
+//   var exercisePhoto = document.createElement('img');
+//   exercisePhoto.setAttribute('src', exercise.photo);
+//   document.getElementById('info-box').appendChild(exercisePhoto);
+//
+//   var factsContent = document.createElement('ul');
+//   document.getElementById('info-box').appendChild(factsContent);
+//
+//   for (var i = 0; i < commentsArray.length; i++) {
+//     var userComment = document.createElement('p');
+//     var inputName = document.createElement('p');
+//     if (commentsArray[i].exercise === currentexercise) {
+//       userComment.textContent = commentsArray[i].comment;
+//       inputName.textContent = commentsArray[i].username;
+//       document.getElementById('comments').appendChild(inputName);
+//       document.getElementById('comments').appendChild(userComment);
+//     }
+//   }
+//
+//   for (var i = 0; i < exercise.factsList.length; i++){
+//     var facts = document.createElement('li');
+//     facts.textContent = exercise.factsList[i];
+//     factsContent.appendChild(facts);
+//   }
+// }
+//
+// function displayExercises() {
+//   var places = document.getElementById('places-list');
+//   var resultsHeader = document.createElement('h2');
+//   resultsHeader.textContent = 'List of exercises';
+//   places.appendChild(resultsHeader);
+//   var formResultsOL = document.createElement('ul');
+//   places.appendChild(formResultsOL);
+//   for (i = 0; i < exerciseArray.length; i++) {
+//     var formResultsLI = document.createElement('li');
+//     formResultsOL.appendChild(formResultsLI);
+//     var aTag = document.createElement('a');
+//     aTag.setAttribute('href', 'exercise.html?id=' + exerciseArray[i].pageLink);
+//     aTag.innerHTML = exerciseArray[i].name;
+//     formResultsLI.appendChild(aTag);
+//   }
+// }
 
-  fetchCommentsFromLocal();
-
-  var title = document.createElement('h1');
-  title.textContent = exercise.name;
-  document.getElementById('exercise-name').appendChild(title);
-
-  // var mapImage = document.createElement('iframe');
-  // mapImage.src = exercise.map;
-  // document.getElementById('google-map').appendChild(mapImage);
-
-  var blurbContent = document.createElement('indoors');
-  blurbContent.textContent = exercise.blurb;
-  document.getElementById('info-box').appendChild(blurbContent);
-
-  currentexercise = exercise.pageLink;
-
-  var exercisePhoto = document.createElement('img');
-  exercisePhoto.setAttribute('src', exercise.photo);
-  document.getElementById('info-box').appendChild(exercisePhoto);
-
-  var factsContent = document.createElement('ul');
-  document.getElementById('info-box').appendChild(factsContent);
-
-  for (var i = 0; i < commentsArray.length; i++) {
-    var userComment = document.createElement('p');
-    var inputName = document.createElement('p');
-    if (commentsArray[i].exercise === currentexercise) {
-      userComment.textContent = commentsArray[i].comment;
-      inputName.textContent = commentsArray[i].username;
-      document.getElementById('comments').appendChild(inputName);
-      document.getElementById('comments').appendChild(userComment);
-    }
-  }
-
-  for (var i = 0; i < exercise.factsList.length; i++){
-    var facts = document.createElement('li');
-    facts.textContent = exercise.factsList[i];
-    factsContent.appendChild(facts);
-  }
-}
-
-function displayExercises() {
-  var places = document.getElementById('places-list');
-  var resultsHeader = document.createElement('h2');
-  resultsHeader.textContent = 'List of exercises';
-  places.appendChild(resultsHeader);
-  var formResultsOL = document.createElement('ul');
-  places.appendChild(formResultsOL);
-  for (i = 0; i < exerciseArray.length; i++) {
-    var formResultsLI = document.createElement('li');
-    formResultsOL.appendChild(formResultsLI);
-    var aTag = document.createElement('a');
-    aTag.setAttribute('href', 'exercise.html?id=' + exerciseArray[i].pageLink);
-    aTag.innerHTML = exerciseArray[i].name;
-    formResultsLI.appendChild(aTag);
-  }
-}
-
-//display page content for places.html - navigation backup page
-var exerciseCheck = document.getElementById('exercise-list');
-if (exerciseCheck) {
-  displayExercises();
-}
+// //display page content for places.html - navigation backup page
+// var exerciseCheck = document.getElementById('exercise-list');
+// if (exerciseCheck) {
+//   displayExercises();
+// }
 //event listener submit click = document
 
 

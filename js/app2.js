@@ -2,12 +2,12 @@
 
 var userInputArray = [];
 var questionArray = [];
-
+//Constuctor for questions
 function Question () {
   this.question = '';
   this.name = '';
 }
-
+//defining questions
 var indoorsQuestion = new Question ();
 indoorsQuestion.question = 'Do you want to work out indoors?';
 indoorsQuestion.name = 'indoorsQuestion';
@@ -78,46 +78,46 @@ for (var i = 0; i < questionArray.length; i++){
   document.getElementById('question-space').appendChild(space);
 }
 
-function scoreAssignment(exercise){
-  for (var i = 0; i < userInputArray.length; i++){
-    if (destringify(userInputArray[i].value) === exercise.characteristics[i].value){
-      exercise.score++;
-    }
-  }
-}
-
-function removeForm(){
-  document.getElementById('form-selection').style.display = 'none';
-}
-
-function assignexerciseScores(){
-  for(var i = 0; i < exerciseArray.length; i++){
-    scoreAssignment(exerciseArray[i]);
-    console.log(exerciseArray[i]);
-  }
-}
-
-function destringify(string){
-  if(string === 'true'){
-    string = true;
-  }
-  else if(string === 'false'){
-    string = false;
-  }
-  return string;
-}
-
-function sortResults(){
-  exerciseArray.sort(function (a, b) {
-    if (a.score > b.score){
-      return -1;
-    }
-    if (b.score > a.score){
-      return 1;
-    } return 0;
-  });
-}
-
+// function scoreAssignment(exercise){
+//   for (var i = 0; i < userInputArray.length; i++){
+//     if (destringify(userInputArray[i].value) === exercise.characteristics[i].value){
+//       exercise.score++;
+//     }
+//   }
+// }
+//
+// function removeForm(){
+//   document.getElementById('form-selection').style.display = 'none';
+// }
+//
+// function assignexerciseScores(){
+//   for(var i = 0; i < exerciseArray.length; i++){
+//     scoreAssignment(exerciseArray[i]);
+//     console.log(exerciseArray[i]);
+//   }
+// }
+//
+// function destringify(string){
+//   if(string === 'true'){
+//     string = true;
+//   }
+//   else if(string === 'false'){
+//     string = false;
+//   }
+//   return string;
+// }
+//
+// function sortResults(){
+//   exerciseArray.sort(function (a, b) {
+//     if (a.score > b.score){
+//       return -1;
+//     }
+//     if (b.score > a.score){
+//       return 1;
+//     } return 0;
+//   });
+// }
+//
 function processUserAnswers(event){
   event.preventDefault();
   document.getElementById('help-me-choose-form').style.display = 'none';
@@ -190,7 +190,7 @@ function appendResultList(sortedArray) {
     var formResultsLI = document.createElement('li');
     formResultsOL.appendChild(formResultsLI);
     var aTag = document.createElement('a');
-    aTag.setAttribute('href', sortedArray[i].exercise.pageLink);
+    aTag.setAttribute('href', sortedArray[i].exercise.pageLink); // ?parameter=exercisename.html
     //aTag.setAttribute('href', + sortedArray[i].exercise.pageLink);
     aTag.innerHTML = sortedArray[i].exercise.name;
     formResultsLI.appendChild(aTag);
